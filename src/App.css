@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", serif;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+    --dark-cell: #769656;
+    --light-cell: #eeeed2;
+    --selected-dark-cell: #bbcb2b;
+    --selected-light-cell: #f7f769;
+    --text-light-cell: #779952;
+    --text-dark-cell: #edeed1;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #312e2b;
+}
+
+.board {
+    width: calc(var(--index) * 28);
+    height: calc(var(--index) * 28);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    width: calc(var(--index) * 3.5);
+    height: calc(var(--index) * 3.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.coordinate-x , .coordinate-y {
+    position: absolute;
+    font-size: calc(var(--index) * 0.6);
+    font-weight: normal;
+}
+
+.coordinate-x {
+    bottom: 5%;
+    right: 7%;
+}
+
+.coordinate-y {
+    top: 5%;
+    left: 5%;
+}
+
+.cell img {
+    width: calc(var(--index) * 3.5);
+    height: calc(var(--index) * 3.5);
+    position: relative;
+}
+
+.dark {
+    background-color: var(--dark-cell);
+    color: var(--text-dark-cell);
+}
+
+.light {
+    background-color: var(--light-cell);
+    color: var(--text-light-cell);
+}
+
+.selected-light {
+    background-color: var(--selected-light-cell);
+}
+
+.selected-dark {
+    background-color: var(--selected-dark-cell);
+}
+
+
+
+
