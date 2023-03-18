@@ -12,14 +12,12 @@ export enum FigureNames {
   PAWN = "Pawn",
 }
 
-
 export class Figure {
   color: Colors;
   icon: typeof icon | null;
   cell: Cell;
   name: FigureNames;
   id: number;
-
 
   constructor(color: Colors, cell: Cell) {
     this.color = color;
@@ -31,6 +29,8 @@ export class Figure {
   }
 
   canMove(target: Cell): boolean {
+    if(target.figure?.color === this.color) return false;
+    if(target.figure?.name === FigureNames.KING) return false;
     return true;
   }
 
