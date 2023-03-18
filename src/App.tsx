@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "./App.css";
 import BoardComponent from "./components/BoardComponent";
 import {Board} from "./models/Board";
 import {Colors} from "./models/Colors";
 import {Player} from "./models/Player";
 import LostFigures from "./components/LostFigures";
+import Timer from "./components/Timer";
 
 const App = () => {
   const [board, setBoard] = useState<Board>(initBoard());
@@ -12,7 +13,7 @@ const App = () => {
   const [blackPlayer] = useState<Player>(new Player(Colors.DARK));
   const [currentPlayer, setCurrentPlayer] = useState<Player>(whitePlayer);
 
-  const initBoard = () => {
+  function initBoard()  {
     const newBoard = new Board();
     newBoard.initCells();
     newBoard.addFigures();
@@ -30,7 +31,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <button className="restart" onClick={restart}>Restart</button>
+      <Timer currentPlayer={currentPlayer} restart={restart} />
         <BoardComponent
           board={board}
           setBoard={setBoard}
