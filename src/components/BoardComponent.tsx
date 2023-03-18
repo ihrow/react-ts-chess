@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useCallback, useEffect, useState} from 'react';
 import {Board} from "../models/Board";
 import CellComponent from "./CellComponent";
 import {Cell} from "../models/Cell";
@@ -25,21 +25,17 @@ const BoardComponent: FC<BoardComponentProps> = ({board, setBoard, currentPlayer
       }
     }
   }
-
-  const highlightCells = () => {
+  
+  const highlightCells = useCallback(() => {
     board.highlightCells(selectedCell);
-    updateBoard();
-  }
+    const newBoard = board.getCopyBoard();
+    setBoard(newBoard)
+  }, [board, selectedCell, setBoard])
 
   useEffect(() => {
     highlightCells();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCell])
+  }, [highlightCells, selectedCell])
 
-  const updateBoard = () => {
-    const newBoard = board.getCopyBoard();
-    setBoard(newBoard)
-  }
 
   return (
     <div className="game">
