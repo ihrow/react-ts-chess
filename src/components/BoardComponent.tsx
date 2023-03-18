@@ -26,14 +26,15 @@ const BoardComponent: FC<BoardComponentProps> = ({board, setBoard, currentPlayer
     }
   }
 
-  useEffect(() => {
-    highlightCells();
-  }, [selectedCell])
-
   const highlightCells = () => {
     board.highlightCells(selectedCell);
     updateBoard();
   }
+
+  useEffect(() => {
+    highlightCells();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCell])
 
   const updateBoard = () => {
     const newBoard = board.getCopyBoard();

@@ -8,13 +8,14 @@ import LostFigures from "./components/LostFigures";
 
 const App = () => {
   const [board, setBoard] = useState<Board>(new Board());
-  const [whitePlayer, setWhitePlayer] = useState<Player>(new Player(Colors.LIGHT));
-  const [blackPlayer, setBlackPlayer] = useState<Player>(new Player(Colors.DARK));
+  const [whitePlayer] = useState<Player>(new Player(Colors.LIGHT));
+  const [blackPlayer] = useState<Player>(new Player(Colors.DARK));
   const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null);
 
   useEffect(() => {
     restart();
     setCurrentPlayer(whitePlayer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const restart = () => {
