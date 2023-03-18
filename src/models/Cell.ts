@@ -36,7 +36,7 @@ export class Cell {
   }
 
   public isEmpty(): boolean {
-    return !!this.figure;
+    return !this.figure;
   }
 
   public isEmptyVertical(target: Cell): boolean {
@@ -74,10 +74,17 @@ export class Cell {
     const dx = this.x < target.x ? 1 : -1;
 
     for (let i = 1; i < absX; i++) {
-      if (this.board.getCell(this.x + i * dx, this.y + i * dy).isEmpty()) {
+      if (!this.board.getCell(this.x + i * dx, this.y + i * dy).isEmpty()) {
         return false;
       }
     }
     return true;
+  }
+
+  isEnemy(target: Cell): boolean {
+    if (target.figure) {
+      return target.figure.color !== this.figure?.color
+    }
+    return false;
   }
 }
