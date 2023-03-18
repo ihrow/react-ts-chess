@@ -22,6 +22,7 @@
     justify-content: center;
     align-items: center;
     background-color: #312e2b;
+    position: relative;
 }
 
 .board {
@@ -170,6 +171,42 @@
     margin-right: 5px;
 }
 
+.timer {
+    width: calc(var(--index) * 5);
+    border-radius: 5px;
+    font-size: calc(var(--index) * 1);
+    color: var(--text-color);
+    padding: 5px;
+    text-align: end;
+    font-weight: bold;
+}
+
+.timer-black {
+    position: absolute;
+    top: calc(var(--index) * 7.5);
+    left: 5%;
+    background-color: #2b2926;
+    color: #82817f;
+}
+
+.timer-black-active {
+    background-color: #262421;
+    color: #ffffff;
+}
+
+.timer-white {
+    position: absolute;
+    bottom: calc(var(--index) * 5.5);
+    left: 5%;
+    background-color: #989795;
+    color: #61605d;
+}
+
+.timer-white-active {
+    background-color: white;
+    color: #262421;
+}
+
 @media screen and (max-width: 600px) {
     .app {
         flex-direction: column;
@@ -187,8 +224,36 @@
     }
 
     .lost-figures {
+        height: 60%;
         margin-right: 0;
-        margin-bottom: calc(var(--index) * 3);
+    }
+
+    .timer-white {
+        bottom: calc(var(--index) * 26);
+
+    }
+
+    .timer-black {
+        top: calc(var(--index) * 40.3);
+        left: calc(var(--index) * 24);
+    }
+
+    .restart {
+        position: relative;
+        top: calc(var(--index) * 40.3);
+        right: calc(var(--index) * 1);
+    }
+}
+
+@media screen and (max-width: 380px) {
+
+    .timer-white {
+        bottom: calc(var(--index) * 22);
+    }
+
+    .timer-black {
+        top: calc(var(--index) * 39.7);
+        left: calc(var(--index) * 28);
     }
 }
 

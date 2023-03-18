@@ -25,17 +25,22 @@ const BoardComponent: FC<BoardComponentProps> = ({board, setBoard, currentPlayer
       }
     }
   }
-  
-  const highlightCells = useCallback(() => {
-    board.highlightCells(selectedCell);
-    const newBoard = board.getCopyBoard();
-    setBoard(newBoard)
-  }, [board, selectedCell, setBoard])
 
   useEffect(() => {
     highlightCells();
-  }, [highlightCells, selectedCell])
+    // unfortunately, we need to disable this rule here
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCell])
 
+  function highlightCells() {
+    board.highlightCells(selectedCell)
+    updateBoard();
+  }
+
+  function updateBoard() {
+    const newBoard = board.getCopyBoard()
+    setBoard(newBoard)
+  }
 
   return (
     <div className="game">
