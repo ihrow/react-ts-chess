@@ -10,7 +10,11 @@ interface CellComponentProps {
 const CellComponent: FC<CellComponentProps> = ({cell, selected, click}) => {
   return (
     <div
-      className={['cell', cell.color, selected ? `selected-${cell.color}` : ''].join(' ')}
+      className={[
+        'cell',
+        cell.color, selected ? `selected-${cell.color}` : '',
+        cell.available && cell.figure ? 'target' : ""
+      ].join(' ')}
       onClick={() => click(cell)}
     >
 
@@ -20,8 +24,8 @@ const CellComponent: FC<CellComponentProps> = ({cell, selected, click}) => {
       <span className={['coordinate-y', cell.color, selected ? `selected-${cell.color}` : ''].join(' ')}>
         {cell.x === 0 ? `${String.fromCharCode(cell.y + 49)}` : null}
       </span>
-
-      {cell.figure?.icon && <img alt={cell.figure.color + ' ' + cell.figure.name} src={cell.figure.icon} />}
+      {cell.available && !cell.figure && <div className="available"/>}
+      {cell.figure?.icon && <img alt={cell.figure.color + ' ' + cell.figure.name} src={cell.figure.icon}/>}
     </div>
   );
 };

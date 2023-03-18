@@ -79,6 +79,23 @@
     background-color: var(--selected-dark-cell);
 }
 
+.available {
+    width: calc(var(--index) * 1);
+    height: calc(var(--index) * 1);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.target::after {
+    content: "";
+    position: absolute;
+    width: calc(var(--index) * 3);
+    height: calc(var(--index) * 3);
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+
+}
+
 
 
 
