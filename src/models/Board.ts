@@ -25,7 +25,7 @@ export class Board {
   }
 
   public getCell(x: number, y: number) {
-    return this.cells[y][x]
+    return this.cells[y][x];
   }
 
   public addFigures() {
@@ -76,5 +76,21 @@ export class Board {
   private addQueens() {
     new Queen(Colors.DARK, this.getCell(3, 0));
     new Queen(Colors.LIGHT, this.getCell(3, 7));
+  }
+
+  public highlightCells(selectedCell: Cell | null) {
+    for (let i = 0; i < this.cells.length; i++) {
+      const row = this.cells[i];
+      for (let j = 0; j < row.length; j++) {
+        const target = row[j];
+        target.available = !!selectedCell?.figure?.canMove(target)
+      }
+    }
+  }
+
+  public getCopyBoard(): Board {
+    const newBoard = new Board();
+    newBoard.cells = this.cells;
+    return newBoard;
   }
 }
